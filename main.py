@@ -1,4 +1,5 @@
 import socket
+import requests
 s = socket.socket()
 print("Socket created")
 port= 80
