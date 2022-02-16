@@ -1,6 +1,6 @@
 import socket
 import requests
-
+import sys
 # Task 5i
 url = 'https://www.abweb.biz'
 r = requests.get(url)
@@ -29,28 +29,28 @@ s = socket.socket()
 print("Socket created")
 port = 8080
 
-import sys
-
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print("Socket created successfully")
 except socket.error as err:
     print("Socket creation failed with error %s" % (err))
 
-port=80
 try:
-    host_ip = socket.gethostbyname("www.facebook.com")
+    host_ip = socket.gethostbyname("www.abweb.biz")
 except socket.gaierror:
     sys.exit()
-s.connect((host_ip, port))
-print("Successfully connect to the website given %s:%s" % (host_ip, port))
+    s.connect((host_ip, port))
+    print("Successfully connect to the website given %s:%s" % (host_ip, port))
 
 s = socket.socket()
 print("Socket created")
+
 s.bind(('', port))
 print("Socket bind to %s" % (port))
+
 s.listen(5)
 print("Socket is listening...")
+
 while True:
     c, addr = s.accept()
     print("Connection from", addr)
